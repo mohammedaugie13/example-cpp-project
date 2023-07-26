@@ -47,12 +47,13 @@ elseif (APPLE) #osx icon ressource file, provided from /packaging directory
     set(ICON_RESOURCE "${PROJECT_SOURCE_DIR}/packaging/exampleApp.icns")
 endif()
 
-add_executable(exampleApp MACOSX_BUNDLE
-    ${ICON_RESOURCE}
+add_executable(exampleApp
     ${CMAKE_CURRENT_BINARY_DIR}/version.cpp
-    SomeClass.cpp
-    SomeClass.h
-    main.cpp)
+        main.cpp
+        SomeClass.cpp
+        SomeClass.h
+        HttpClient.hpp
+)
 add_dependencies(exampleApp versionFileTouchForRebuild) # We want precise time of build in version
 target_include_directories(exampleApp PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
 target_link_libraries (exampleApp PRIVATE Threads::Threads)

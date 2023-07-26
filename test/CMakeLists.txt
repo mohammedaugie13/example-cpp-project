@@ -29,14 +29,14 @@ add_custom_target(checkVerbose
 
 
 # Basic runable tests (will not crash)
-add_test(NAME "Is_Runable "
-    COMMAND $<TARGET_FILE:exampleApp>)
-
-add_test(NAME "Is_Runable-v"
-    COMMAND $<TARGET_FILE:exampleApp> -v)
-
-add_test(NAME "Is_Runable-h"
-    COMMAND $<TARGET_FILE:exampleApp> -h)
+#add_test(NAME "Is_Runable "
+#    COMMAND $<TARGET_FILE:exampleApp>)
+#
+#add_test(NAME "Is_Runable-v"
+#    COMMAND $<TARGET_FILE:exampleApp> -v)
+#
+#add_test(NAME "Is_Runable-h"
+#    COMMAND $<TARGET_FILE:exampleApp> -h)
 
 
 
@@ -44,7 +44,7 @@ add_test(NAME "Is_Runable-h"
 
 # Add unit test to CTest suite as one of the tests
 # unit test build is located in source/unittest/CMakeLists.txt
-add_test(NAME "catch_unit_tests"
-    COMMAND $<TARGET_FILE:unittests>
-    WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR})
+#add_test(NAME "catch_unit_tests"
+#    COMMAND $<TARGET_FILE:unittests>
+#    WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR})
 

@@ -14,6 +14,26 @@ message(STATUS "")
 #------------------------------------------------------------------------------
 # General settings
 
+#----Running conan install directly from CMakeLists
+
+if(NOT EXISTS "${CMAKE_BINARY_DIR}/conan.cmake")
+    message(STATUS "Downloading conan.cmake from https://github.com/conan-io/cmake-conan")
+    file(DOWNLOAD "https://raw.githubusercontent.com/conan-io/cmake-conan/v0.14/conan.cmake"
+            "${CMAKE_BINARY_DIR}/conan.cmake")
+endif()
+
+include(${CMAKE_BINARY_DIR}/conan.cmake)
+message(${CMAKE_BINARY_DIR})
+conan_cmake_run(CONANFILE conanfile.py
+        BASIC_SETUP CMAKE_TARGETS
+        BUILD missing
+        )
+
+include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
+conan_basic_setup()
+
+#-----End Running conan install directly from CMakelists
+
 # Be nice to visual studio
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 
@@ -71,8 +91,7 @@ add_subdirectory(test)
 # Source code
 add_subdirectory(source)
 
-# Packaging stuff (deb, rpm, windows installer)
-add_subdirectory(packaging)
+
 
 
 
